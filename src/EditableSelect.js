@@ -53,14 +53,6 @@ export default class EditableSelect extends React.Component {
     this.setState({isEditing: true});
   }
 
-  handleInputBlur = () => {
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    } else {
-      this.cancel();
-    }
-  }
-
   setLinkText(text) {
     this.state.text = text;
     this.state.textStyle = {
@@ -89,14 +81,13 @@ export default class EditableSelect extends React.Component {
       });
       const selectClassName = `form-control input-sm ${this.props.className}`;
       return (
-        <XEditable isLoading={false} save={this.save} cancel={this.cancel}>
+        <XEditable isLoading={false} save={this.save} cancel={this.cancel} blur={this.props.onBlur}>
           <select
             ref='el'
             className={selectClassName}
             id={this.props.id}
             name={this.props.name}
             defaultValue={this.state.value}
-            onBlur={this.handleInputBlur}
             autoFocus
           >
             {options}

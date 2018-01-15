@@ -5,6 +5,7 @@ export default class XEditable extends React.Component {
   static defaultProps = {
     isLoading: false
   };
+
   static propTypes = {
     isLoading: PropTypes.bool
   };
@@ -12,9 +13,16 @@ export default class XEditable extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  blur = () => {
+    if (this.props.blur) {
+      this.props.blur();
+    }
+  }
+
   render() {
     return (
-      <span className='editable-container editable-inline'>
+      <span className='editable-container editable-inline' onBlur={this.blur}>
         <div>
           {this.props.isLoading
             ? (

@@ -14,8 +14,19 @@ const XTextField = class XTextField extends React.Component {
     this.setState({value: value});
     alert('Value Changed:' + value);
   }
+  handleBlur = () => {
+    alert('EditableTextField blur');
+  }
   render() {
-    return (<EditableTextField name='test' value={this.state.value} onUpdate={this.handleUpdate} placeholder='Please input your name'/>);
+    return (
+      <EditableTextField
+        name='test'
+        value={this.state.value}
+        onUpdate={this.handleUpdate}
+        onBlur={this.handleBlur}
+        placeholder='Please input your name'
+      />
+    );
   }
 };
 
@@ -31,12 +42,23 @@ const XSelect = class XSelect extends React.Component {
     this.setState({value: value});
     alert('Value Changed:' + value);
   }
+  handleBlur = () => {
+    alert('EditableSelect blur');
+  }
   render() {
     const options2 = [
       'Hello', 'World', 'Sky', 'Air',
       // 'UK',
     ];
-    return (<EditableSelect name='country' onUpdate={this.handleUpdate} value={this.state.value} options={options2}/>);
+    return (
+      <EditableSelect
+        name='country'
+        onUpdate={this.handleUpdate}
+        onBlur={this.handleBlur}
+        value={this.state.value}
+        options={options2}
+      />
+    );
   }
 };
 
@@ -51,6 +73,9 @@ const XSelect2 = class XSelect extends React.Component {
   handleUpdate = (name, value) => {
     this.setState({value: value});
     alert('Value Changed:' + value);
+  }
+  handleBlur = () => {
+    alert('EditableSelect blur');
   }
   render() {
     const options = [
@@ -69,7 +94,16 @@ const XSelect2 = class XSelect extends React.Component {
       }
     ];
     const defaultText = <span className="glyphicon glyphicon-pencil"/>;
-    return (<EditableSelect name='country' onUpdate={this.handleUpdate} value={this.state.value} options={options} defaultText={defaultText}/>);
+    return (
+      <EditableSelect
+        name='country'
+        onUpdate={this.handleUpdate}
+        onBlur={this.handleBlur}
+        value={this.state.value}
+        options={options}
+        defaultText={defaultText}
+      />
+    );
   }
 };
 
@@ -84,8 +118,19 @@ const XTextArea = class XTextArea extends React.Component {
   handleUpdate = (name, value) => {
     this.setState({value: value});
   }
+  handleBlur = () => {
+    alert('EditableTextArea blur');
+  }
   render() {
-    return (<EditableTextArea name='test' value={this.state.value} onUpdate={this.handleUpdate} placeholder='Please input your name'/>);
+    return (
+      <EditableTextArea
+        name='test'
+        value={this.state.value}
+        onUpdate={this.handleUpdate}
+        onBlur={this.handleBlur}
+        placeholder='Please input your name'
+      />
+    );
   }
 };
 ReactDOM.render(

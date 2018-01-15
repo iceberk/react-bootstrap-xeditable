@@ -42,19 +42,11 @@ export default class EditableTextField extends React.Component {
     this.setState({isEditing: true});
   }
 
-  handleInputBlur = () => {
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    } else {
-      this.cancel();
-    }
-  }
-
   render() {
     if (this.state.isEditing) {
       const inputClassName = `form-control input-sm ${this.props.className}`;
       return (
-        <XEditable isLoading={false} save={this.save} cancel={this.cancel}>
+        <XEditable isLoading={false} save={this.save} cancel={this.cancel} blur={this.props.onBlur}>
           <input
             ref='el'
             id={this.props.id}
@@ -63,7 +55,6 @@ export default class EditableTextField extends React.Component {
             name={this.props.name}
             defaultValue={this.props.value}
             placeholder={this.props.placeholder}
-            onBlur={this.handleInputBlur}
             autoFocus
           />
           <span className='editable-clear-x' onClick={this.clear}></span>

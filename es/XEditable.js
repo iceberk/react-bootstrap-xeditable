@@ -39,7 +39,16 @@ var XEditable = function (_React$Component) {
 
   function XEditable(props) {
     (0, _classCallCheck3.default)(this, XEditable);
-    return (0, _possibleConstructorReturn3.default)(this, (XEditable.__proto__ || (0, _getPrototypeOf2.default)(XEditable)).call(this, props));
+
+    var _this = (0, _possibleConstructorReturn3.default)(this, (XEditable.__proto__ || (0, _getPrototypeOf2.default)(XEditable)).call(this, props));
+
+    _this.blur = function () {
+      if (_this.props.blur) {
+        _this.props.blur();
+      }
+    };
+
+    return _this;
   }
 
   (0, _createClass3.default)(XEditable, [{
@@ -47,7 +56,7 @@ var XEditable = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'span',
-        { className: 'editable-container editable-inline' },
+        { className: 'editable-container editable-inline', onBlur: this.blur },
         _react2.default.createElement(
           'div',
           null,

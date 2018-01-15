@@ -44,19 +44,11 @@ export default class EditableTextArea extends React.Component {
     this.setState({isEditing: true});
   }
 
-  handleInputBlur = () => {
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    } else {
-      this.cancel();
-    }
-  }
-
   render() {
     if (this.state.isEditing) {
       const textareaClassName = `form-control ${this.props.className}`;
       return (
-        <XEditable isLoading={false} save={this.save} cancel={this.cancel}>
+        <XEditable isLoading={false} save={this.save} cancel={this.cancel} blur={this.props.onBlur}>
           <textarea
             ref='el'
             id={this.props.id}
@@ -66,7 +58,6 @@ export default class EditableTextArea extends React.Component {
             name={this.props.name}
             defaultValue={this.props.value}
             placeholder={this.props.placeholder}
-            onBlur={this.handleInputBlur}
             autoFocus
           />
         </XEditable>
