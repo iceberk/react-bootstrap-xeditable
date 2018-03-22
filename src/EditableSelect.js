@@ -41,6 +41,7 @@ export default class EditableSelect extends React.Component {
     const text = this.refs.el.options && this.refs.el.options[this.refs.el.selectedIndex] && this.refs.el.options[this.refs.el.selectedIndex].text;
     this.setState({
       isEditing: false,
+      value: this.refs.el.value
     });
     this.setLinkText(text);
   }
