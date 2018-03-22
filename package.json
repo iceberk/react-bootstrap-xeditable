@@ -7,12 +7,12 @@
   "jsnext:main": "es/index.js",
   "typings": "d.ts/index.d.ts",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --inline --progress --port 8080",
-    "build:commonjs": "./node_modules/.bin/rimraf lib && ./node_modules/.bin/cross-env BABEL_ENV=commonjs ./node_modules/.bin/babel src --out-dir lib",
-    "build:es": "./node_modules/.bin/rimraf es && ./node_modules/.bin/cross-env BABEL_ENV=es ./node_modules/.bin/babel src --out-dir es",
-    "build:umd": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/cross-env BABEL_ENV=commonjs ./node_modules/.bin/webpack --config config/webpack.prod.js --progress --profile --bail",
+    "start": "webpack-dev-server --inline --progress --port 8080",
+    "build:commonjs": "rimraf lib && cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "rimraf es && cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:umd": "rimraf dist && cross-env BABEL_ENV=commonjs webpack --config config/webpack.prod.js --progress --profile --bail",
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd",
-    "test": "./node_modules/.bin/ava -v",
+    "test": "ava -v",
     "prepublish": "npm run test && npm run build"
   },
   "files": [
